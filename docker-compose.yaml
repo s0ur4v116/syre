@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  bot:
+    build: .
+    container_name: syrie
+    depends_on:
+      - db
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+
+  db:
+    image: mongodb/mongodb-community-server:latest
+    container_name: mongodb
+    volumes:
+      - mongo-data:/data/db
+
+volumes:
+  mongo-data:
